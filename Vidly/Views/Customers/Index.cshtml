@@ -1,0 +1,59 @@
+﻿@using Vidly.Models
+@model IEnumerable<Customer>
+           
+@{
+    ViewBag.Title = "Customers List";
+}
+
+<h2>Customers</h2>
+@if (Model.Any() == false)
+{
+    <p>Sorry, We have no customers yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <tr>
+            <th>Customer Name</th>
+            <th>Membership Type</th>
+            <th>Discount Rate</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(
+                        customer.Name,
+                        "Details",
+                        "Customers",
+                        new
+                        {
+                            id = customer.Id,
+                        },
+                        null
+                        )
+                </td>
+                <td>
+                    @switch (customer.MembershipType.Id)
+                    {
+                        case 4:
+                            <p>Annually</p>
+                            break;
+                        case 3:
+                            <p>Three Months</p>
+                            break;
+                        case 2:
+                            <p>Monthly</p>
+                            break;
+                        default:
+                            <p>Pay As you Go</p>
+                            break;
+                    }
+                </td>
+                <td>
+                    @customer.MembershipType.DiscountRate%
+                </td>
+            </tr>
+        }
+    </table>
+}
