@@ -30,28 +30,21 @@ else
                         {
                             id = customer.Id,
                         },
-                        null
-                        )
+                        new
+                        {
+                            @class = "btn"
+                        }
+                    )
                 </td>
                 <td>
-                    @switch (customer.MembershipType.Id)
-                    {
-                        case 4:
-                            <p>Annually</p>
-                            break;
-                        case 3:
-                            <p>Three Months</p>
-                            break;
-                        case 2:
-                            <p>Monthly</p>
-                            break;
-                        default:
-                            <p>Pay As you Go</p>
-                            break;
-                    }
+                    <p>
+                        @customer.MembershipType.Name
+                    </p>
                 </td>
                 <td>
-                    @customer.MembershipType.DiscountRate%
+                    <p>
+                        @customer.MembershipType.DiscountRate%
+                    </p>
                 </td>
             </tr>
         }
