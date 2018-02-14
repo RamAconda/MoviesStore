@@ -7,26 +7,39 @@ namespace Vidly.Models
 {
     public class CustomersManager
     {
-        public static ApplicationDbContext Context {get; set; }
+        private readonly ApplicationDbContext _context;
 
-
-        public static IQueryable<Customer> GetCustomers()
+        public CustomersManager(ApplicationDbContext context)
         {
-            if (Context == null)
+            if (context == null)
             {
-                throw new NullReferenceException("Database context is null");
+                throw new Exception("_context can't be assigned to null, it needs to be instantiated.");
             }
-            return Context.Customers.Include(customer => customer.MembershipType);
+            _context = context;
         }
 
-        public static List<Customer> GetCustomersAsList()
+        private void ThrowContextExceptionIfNull()
+        {
+            if (_context == null)
+            {
+                throw new Exception("_context is null, can't be used.");
+            }
+        }
+
+        public IQueryable<Customer> GetCustomers()
+        {
+            ThrowContextExceptionIfNull();
+            return _context.Customers.Include(customer => customer.MembershipType);
+        }
+
+        public List<Customer> GetCustomersAsList()
         {
             return GetCustomers().ToList();
         }
 
-        public static Customer GetCustomerById(int id)
+        public Customer GetCustomerById(int id)
         {
-            return GetCustomers().SingleOrDefault(c => c.Id == id);
+            return GetCustomers().SingleOrDefault(customer => customer.Id == id);
         }
     }
 }

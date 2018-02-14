@@ -1,34 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Data.Entity;
 
 namespace Vidly.Models
 {
     public class MoviesManager
     {
-        public static ApplicationDbContext Context { get; set; }
+        private readonly ApplicationDbContext _context;
 
-        public static IQueryable<Movie> GetMovies()
+        public MoviesManager(ApplicationDbContext context)
         {
-            if (Context == null)
+            //check that the parameter is not null,
+            //because if it's null and the _context not null 
+            //then not to be assigned to null
+            if (context == null)
             {
-                throw new NullReferenceException("Database context is null");
+                throw new Exception("_context can't be assigned to null, it needs to be instantiated.");
             }
-            return Context.Movies.Include(movie => movie.GenreLkp);
+            _context = context;
         }
 
-        public static List<Movie> GetMoviesAsList()
+        private void ThrowContextExceptionIfNull()
+        {
+            if (_context == null)
+            {
+                throw new Exception("_context is null, can't be used.");
+            }
+        }
+
+        public IQueryable<Movie> GetMovies()
+        {
+            ThrowContextExceptionIfNull();
+            return _context.Movies.Include(movie => movie.GenreLkp);
+        }
+
+        public List<Movie> GetMoviesAsList()
         {
             return GetMovies().ToList();
         }
 
-        public static Movie GetMovieById(int id)
+        public Movie GetMovieById(int id)
         {
             return GetMovies().SingleOrDefault(movie => movie.Id == id);
         }
-
-
     }
 }
