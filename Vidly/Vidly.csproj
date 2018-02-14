@@ -212,6 +212,7 @@
     <Compile Include="Models\GenreLkp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\ModelManagerFactory.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviesManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
