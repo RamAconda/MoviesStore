@@ -5,3 +5,18 @@
 }
 
 <h2>@Model.Name</h2>
+<ul class="list-group">
+    <li class="list-group-item">
+        <p>
+            Membership Type : @Model.MembershipType.Name
+        </p>
+    </li>
+    @if (Model.DateOfBirth != null)
+    {
+        <li class="list-group-item">
+            <p>
+                Date of birth : @Model.DateOfBirth.Value.Date
+            </p>
+        </li>
+    }
+</ul>

@@ -189,10 +189,27 @@
     <Compile Include="Migrations\201802130251062_Add membershipType name property.Designer.cs">
       <DependentUpon>201802130251062_Add membershipType name property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802130802387_Add Customer property DateOfBirth.cs" />
+    <Compile Include="Migrations\201802130802387_Add Customer property DateOfBirth.Designer.cs">
+      <DependentUpon>201802130802387_Add Customer property DateOfBirth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802130821526_Customer DateOfBirth Nullable.cs" />
+    <Compile Include="Migrations\201802130821526_Customer DateOfBirth Nullable.Designer.cs">
+      <DependentUpon>201802130821526_Customer DateOfBirth Nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802141449373_Add properties to Movie class and create Genre class.cs" />
+    <Compile Include="Migrations\201802141449373_Add properties to Movie class and create Genre class.Designer.cs">
+      <DependentUpon>201802141449373_Add properties to Movie class and create Genre class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802141454594_populate genrelkp table.cs" />
+    <Compile Include="Migrations\201802141454594_populate genrelkp table.Designer.cs">
+      <DependentUpon>201802141454594_populate genrelkp table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomersManager.cs" />
+    <Compile Include="Models\GenreLkp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -280,6 +297,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802130251062_Add membershipType name property.resx">
       <DependentUpon>201802130251062_Add membershipType name property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802130802387_Add Customer property DateOfBirth.resx">
+      <DependentUpon>201802130802387_Add Customer property DateOfBirth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802130821526_Customer DateOfBirth Nullable.resx">
+      <DependentUpon>201802130821526_Customer DateOfBirth Nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802141449373_Add properties to Movie class and create Genre class.resx">
+      <DependentUpon>201802141449373_Add properties to Movie class and create Genre class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802141454594_populate genrelkp table.resx">
+      <DependentUpon>201802141454594_populate genrelkp table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
