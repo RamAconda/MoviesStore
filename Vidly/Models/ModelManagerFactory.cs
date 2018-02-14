@@ -6,6 +6,7 @@ namespace Vidly.Models
         private static ApplicationDbContext _context;
         private static MoviesManager _moviesManager;
         private static CustomersManager _customersManager;
+        private static MembershipTypesManager _membershipTypesManager;
 
         private static void InstantiateContextIfNull()
         {
@@ -28,6 +29,15 @@ namespace Vidly.Models
             {
                 InstantiateContextIfNull();
                 return _customersManager ?? (_customersManager = new CustomersManager(_context));
+            }
+        }
+
+        public static MembershipTypesManager MembershipTypesManager
+        {
+            get
+            {
+                InstantiateContextIfNull();
+                return _membershipTypesManager ?? (_membershipTypesManager = new MembershipTypesManager(_context));
             }
         }
     }
