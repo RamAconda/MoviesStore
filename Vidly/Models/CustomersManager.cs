@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 
@@ -6,15 +7,16 @@ namespace Vidly.Models
 {
     public class CustomersManager
     {
-        private static ApplicationDbContext _context;
+        public static ApplicationDbContext Context {get; set; }
 
 
-        public static IEnumerable<Customer> GetCustomers()
+        public static IQueryable<Customer> GetCustomers()
         {
-            if (_context == null)
-                _context = new ApplicationDbContext();
-
-            return _context.Customers.Include(c => c.MembershipType);
+            if (Context == null)
+            {
+                throw new NullReferenceException("Database context is null");
+            }
+            return Context.Customers.Include(customer => customer.MembershipType);
         }
 
         public static List<Customer> GetCustomersAsList()
