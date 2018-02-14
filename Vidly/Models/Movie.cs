@@ -21,6 +21,7 @@ namespace Vidly.Models
         public int NumberInStock { get; set; }
 
         public GenreLkp GenreLkp { get; set; }
+
         public int GenreLkpId { get; set; }
     }
 }

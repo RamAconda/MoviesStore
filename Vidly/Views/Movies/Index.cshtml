@@ -7,25 +7,52 @@
 
 @if (Model.Any() == false)
 {
-    <p>Sorry, There is no movies yet.</p>
+    <p>Sorry, There are no movies yet.</p>
 }
 else
 {
-    <table>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                Release Date
+            </th>
+            <th>
+                Added Date
+            </th>
+            <th>
+                Number in stock
+            </th>
+        </tr>
         @foreach (var movie in @Model)
         {
             <tr>
                 <td>
-                    @Html.ActionLink(
-                        @movie.Name,
-                        "Details",
-                        "Movies",
-                        new
-                        {
-                            id=@movie.Id
-                        },
-                        null
-                    )
+                    <p>
+                        @Html.ActionLink(
+                            @movie.Name,
+                            "Details",
+                            "Movies",
+                            new
+                            {
+                                id = @movie.Id
+                            },
+                            new
+                            {
+                                @class = "btn"
+                            }
+                        )
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        @movie.GenreLkp.Name
+                    </p>
                 </td>
             </tr>
         }
