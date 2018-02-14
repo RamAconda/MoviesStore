@@ -19,20 +19,11 @@ else
             <th>
                 Genre
             </th>
-            <th>
-                Release Date
-            </th>
-            <th>
-                Added Date
-            </th>
-            <th>
-                Number in stock
-            </th>
         </tr>
         @foreach (var movie in @Model)
         {
             <tr>
-                <td>
+                <td class="col-sm-3">
                     <p>
                         @Html.ActionLink(
                             @movie.Name,
@@ -49,7 +40,7 @@ else
                         )
                     </p>
                 </td>
-                <td>
+                <td class="col-sm-3">
                     <p>
                         @movie.GenreLkp.Name
                     </p>

@@ -5,3 +5,25 @@
 }
 
 <h2>@Model.Name</h2>
+<ul class="list-group">
+    <li class="list-group-item">
+        <p>
+            Genre : @Model.GenreLkp.Name
+        </p>
+    </li>
+    <li class="list-group-item">
+        <p>
+            Release Date : @Model.ReleaseDate.ToShortDateString()
+        </p>
+    </li>
+    <li class="list-group-item">
+        <p>
+            Date Added : @Model.AddedDate.ToShortDateString()
+        </p>
+    </li>
+    <li class="list-group-item">
+        <p>
+            Number in Stock : @Model.NumberInStock
+        </p>
+    </li>
+</ul>
