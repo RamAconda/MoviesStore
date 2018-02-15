@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.Models.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -25,7 +26,12 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = new Customer(),
+                MembershipTypes = ModelManagerFactory.MembershipTypesManager.GetMembershipTypes()
+            };
+            return View(viewModel);
         }
     }
 }
