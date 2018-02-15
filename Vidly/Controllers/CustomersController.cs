@@ -26,7 +26,7 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new NewCustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 Customer = new Customer(),
                 MembershipTypes = ModelManagerFactory.MembershipTypesManager.GetMembershipTypes()
@@ -34,15 +34,35 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Create(Customer customer)
+        public ActionResult Edit(int id)
         {
-            if (customer != null && ModelState.IsValid == false)
+            var viewModel = new CustomerFormViewModel
             {
-                return View("New");
+                Customer = ModelManagerFactory.CustomersManager.GetCustomerById(id),
+                MembershipTypes = ModelManagerFactory.MembershipTypesManager.GetMembershipTypes()
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult CustomerForm(Customer customer)
+        {
+            //if (customer != null && ModelState.IsValid == false)
+            //{
+            //    return View("New");
+            //}
+
+            if (customer.Id == 0)
+            {
+                ModelManagerFactory.CustomersManager.AddCustomer(customer);
             }
-
-
-            return View();
+            else
+            {
+                ModelManagerFactory.CustomersManager.UpdateCustomer(customer);
+            }
+            ModelManagerFactory.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
     }
 }
