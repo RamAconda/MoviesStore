@@ -33,5 +33,16 @@ namespace Vidly.Controllers
             };
             return View(viewModel);
         }
+
+        public ActionResult Create(Customer customer)
+        {
+            if (customer != null && ModelState.IsValid == false)
+            {
+                return View("New");
+            }
+
+
+            return View();
+        }
     }
 }

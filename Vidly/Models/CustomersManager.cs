@@ -41,5 +41,35 @@ namespace Vidly.Models
         {
             return GetCustomers().SingleOrDefault(customer => customer.Id == id);
         }
+
+        public Customer AddCustomer(Customer customer)
+        {
+            ThrowContextExceptionIfNull();
+
+            //add the customer if _context is not null
+            return _context.Customers.Add(customer);
+        }
+
+        public Customer UpdateCustomer(Customer customer)
+        {
+            if (customer == null)
+            {
+                return null;
+            }
+
+            ThrowContextExceptionIfNull();
+
+            Customer oldVersionCustomer = GetCustomerById(customer.Id);
+            if (oldVersionCustomer != null)
+            {
+                oldVersionCustomer.Name = customer.Name;
+                oldVersionCustomer.DateOfBirth = customer.DateOfBirth;
+                oldVersionCustomer.MembershipTypeId = customer.MembershipTypeId;
+
+                return oldVersionCustomer;
+            }
+
+            return null;
+        }
     }
 }

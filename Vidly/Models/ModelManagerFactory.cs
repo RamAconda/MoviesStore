@@ -40,5 +40,17 @@ namespace Vidly.Models
                 return _membershipTypesManager ?? (_membershipTypesManager = new MembershipTypesManager(_context));
             }
         }
+
+        public static bool SaveChanges()
+        {
+            if (_context != null)
+            {
+                int affected = _context.SaveChanges();
+                if (affected > 0)
+                    return true;
+            }
+            InstantiateContextIfNull();
+            return false;
+        }
     }
 }

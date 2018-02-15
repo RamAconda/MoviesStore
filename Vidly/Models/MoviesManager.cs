@@ -44,5 +44,34 @@ namespace Vidly.Models
         {
             return GetMovies().SingleOrDefault(movie => movie.Id == id);
         }
+
+        public Movie AddMovie(Movie movie)
+        {
+            ThrowContextExceptionIfNull();
+
+            return _context.Movies.Add(movie);
+        }
+
+        public Movie UpdateMovie(Movie movie)
+        {
+            if (movie == null)
+            {
+                return null;
+            }
+            ThrowContextExceptionIfNull();
+
+            Movie oldVersionMovie = GetMovieById(movie.Id);
+            if (oldVersionMovie != null)
+            {
+                oldVersionMovie.Name = movie.Name;
+                oldVersionMovie.ReleaseDate = movie.ReleaseDate;
+                oldVersionMovie.AddedDate = movie.AddedDate;
+                oldVersionMovie.GenreLkpId = movie.GenreLkpId;
+                oldVersionMovie.NumberInStock = movie.NumberInStock;
+
+                return oldVersionMovie;
+            }
+            return null;
+        }
     }
 }
