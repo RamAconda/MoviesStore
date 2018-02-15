@@ -47,6 +47,9 @@ namespace Vidly.Models
 
         public Movie AddMovie(Movie movie)
         {
+            if (movie == null)
+                return null;
+
             ThrowContextExceptionIfNull();
 
             return _context.Movies.Add(movie);
