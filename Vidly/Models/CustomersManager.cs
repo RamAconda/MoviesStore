@@ -44,6 +44,9 @@ namespace Vidly.Models
 
         public Customer AddCustomer(Customer customer)
         {
+            if (customer == null)
+                return null;
+
             ThrowContextExceptionIfNull();
 
             //add the customer if _context is not null
