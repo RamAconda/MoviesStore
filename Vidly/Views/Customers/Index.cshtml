@@ -1,11 +1,19 @@
 ﻿@using Vidly.Models
 @model IEnumerable<Customer>
-           
+
 @{
     ViewBag.Title = "Customers List";
 }
-
-<h2>Customers</h2>
+<div class="row">
+    <h2 class="col-sm-3">Customers List</h2>
+    <div class="col-sm-2"></div>
+    @Html.ActionLink("Add Customer",
+                    "New",
+                    "Customers",
+                    null,
+                            new { @class = "btn btn-primary", id = "new-btn" }
+        )
+</div>
 @if (Model.Any() == false)
 {
     <p>Sorry, We have no customers yet.</p>
