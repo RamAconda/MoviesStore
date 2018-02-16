@@ -16,7 +16,7 @@ namespace Vidly.Models
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
 
         public MembershipType MembershipType { get; set; }

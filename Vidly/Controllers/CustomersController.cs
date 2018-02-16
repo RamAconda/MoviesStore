@@ -47,22 +47,38 @@ namespace Vidly.Controllers
 
         public ActionResult CustomerForm(Customer customer)
         {
-            //if (customer != null && ModelState.IsValid == false)
-            //{
-            //    return View("New");
-            //}
 
             if (customer.Id == 0)
             {
+                if (ModelState.IsValid == false)
+                {
+                    var viewModel = new CustomerFormViewModel
+                    {
+                        Customer = customer,
+                        MembershipTypes = ModelManagerFactory.MembershipTypesManager.GetMembershipTypesAsList()
+                    };
+                    return View("New", viewModel);
+                }
                 ModelManagerFactory.CustomersManager.AddCustomer(customer);
             }
             else
             {
+                if (ModelState.IsValid == false)
+                {
+                    var viewModel = new CustomerFormViewModel
+                    {
+                        Customer = customer,
+                        MembershipTypes = ModelManagerFactory.MembershipTypesManager.GetMembershipTypesAsList()
+                    };
+                    return View("Edit", viewModel);
+                }
                 ModelManagerFactory.CustomersManager.UpdateCustomer(customer);
             }
+
             ModelManagerFactory.SaveChanges();
             
             return RedirectToAction("Index");
         }
+
     }
 }
