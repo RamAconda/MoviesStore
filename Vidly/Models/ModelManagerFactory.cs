@@ -7,6 +7,7 @@ namespace Vidly.Models
         private static MoviesManager _moviesManager;
         private static CustomersManager _customersManager;
         private static MembershipTypesManager _membershipTypesManager;
+        private static GenreLkpManager _genreLkpManager;
 
         private static void InstantiateContextIfNull()
         {
@@ -38,6 +39,16 @@ namespace Vidly.Models
             {
                 InstantiateContextIfNull();
                 return _membershipTypesManager ?? (_membershipTypesManager = new MembershipTypesManager(_context));
+            }
+        }
+
+        public static GenreLkpManager GenreLkpManager
+        {
+            get
+            {
+                InstantiateContextIfNull();
+
+                return _genreLkpManager ?? (_genreLkpManager = new GenreLkpManager(_context));
             }
         }
 

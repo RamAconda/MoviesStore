@@ -12,16 +12,22 @@ namespace Vidly.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy",ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
 
         [Required]
+        [Display(Name = "Added Date")]
         public DateTime AddedDate { get; set; }
         
         [Required]
+        [Display(Name = "Number in stock")]
         public int NumberInStock { get; set; }
 
         public GenreLkp GenreLkp { get; set; }
 
+        [Required]
         public int GenreLkpId { get; set; }
     }
 }

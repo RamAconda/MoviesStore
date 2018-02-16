@@ -1,0 +1,39 @@
+﻿@using Vidly.Models.ViewModels
+@model MovieFormViewModel
+
+@using (@Html.BeginForm("Create", "Movies"))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Movie.Name)
+        @Html.TextBoxFor(model => model.Movie.Name, new {@class="form-control"})
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Movie.ReleaseDate)
+        @Html.TextBoxFor(model => model.Movie.ReleaseDate,"{0:dd/MM/yyyy}",new {@class="form-control"})
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Movie.AddedDate)
+        @Html.TextBoxFor(model => model.Movie.AddedDate, "{0:dd/MM/yyyy}",new {@class="form-control"})
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Movie.NumberInStock)
+        @Html.TextBoxFor(model => model.Movie.NumberInStock, new {@class="form-control"})
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Movie.GenreLkpId)
+        @Html.DropDownListFor(model => model.Movie.GenreLkpId,
+            new SelectList(Model.GenreLkps, "Id", "Name"),
+            "Select Genre",
+            new {@class = "form-control"}
+            )
+    </div>
+    
+    @Html.HiddenFor(model => model.Movie.Id)
+    <input class="btn btn-primary" type="submit" value="Save"/>
+}
+
+
