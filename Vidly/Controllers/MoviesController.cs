@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.Models.ViewModels;
 
@@ -25,9 +24,8 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel()
             {
-                Movie = new Movie(),
                 GenreLkps = ModelManagerFactory.GenreLkpManager.GetGenreLkpsAsList()
             };
 
@@ -36,9 +34,10 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int id)
         {
-            var viewModel = new MovieFormViewModel
+            Movie movie = ModelManagerFactory.MoviesManager.GetMovieById(id);
+
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = ModelManagerFactory.MoviesManager.GetMovieById(id),
                 GenreLkps = ModelManagerFactory.GenreLkpManager.GetGenreLkpsAsList()
             };
 

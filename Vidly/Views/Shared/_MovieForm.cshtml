@@ -4,40 +4,40 @@
 @using (@Html.BeginForm("Create", "Movies"))
 {
     <div class="form-group">
-        @Html.LabelFor(model => model.Movie.Name)
-        @Html.TextBoxFor(model => model.Movie.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.Name)
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Movie.ReleaseDate)
-        @Html.TextBoxFor(model => model.Movie.ReleaseDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.ReleaseDate)
+        @Html.LabelFor(model => model.ReleaseDate)
+        @Html.TextBoxFor(model => model.ReleaseDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ReleaseDate)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Movie.AddedDate)
-        @Html.TextBoxFor(model => model.Movie.AddedDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.AddedDate)
+        @Html.LabelFor(model => model.AddedDate)
+        @Html.TextBoxFor(model => model.AddedDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AddedDate)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Movie.NumberInStock)
-        @Html.TextBoxFor(model => model.Movie.NumberInStock, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.NumberInStock)
+        @Html.LabelFor(model => model.NumberInStock)
+        @Html.TextBoxFor(model => model.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NumberInStock)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Movie.GenreLkpId)
-        @Html.DropDownListFor(model => model.Movie.GenreLkpId,
+        @Html.LabelFor(model => model.GenreLkpId)
+        @Html.DropDownListFor(model => model.GenreLkpId,
             new SelectList(Model.GenreLkps, "Id", "Name"),
             "Select Genre",
             new { @class = "form-control" }
             )
-        @Html.ValidationMessageFor(model => model.Movie.GenreLkpId)
+        @Html.ValidationMessageFor(model => model.GenreLkpId)
     </div>
 
-    @Html.HiddenFor(model => model.Movie.Id)
+    @Html.HiddenFor(model => model.Id)
     @Html.AntiForgeryToken()
     <input class="btn btn-primary" type="submit" value="Save" />
 }

@@ -23,6 +23,7 @@ namespace Vidly.Models
         
         [Required]
         [Display(Name = "Number in stock")]
+        [Range(1,30)]
         public int NumberInStock { get; set; }
 
         public GenreLkp GenreLkp { get; set; }
