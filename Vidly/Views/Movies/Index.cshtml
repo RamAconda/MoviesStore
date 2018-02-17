@@ -5,6 +5,18 @@
     ViewBag.Title = "Movies List";
 }
 
+<div class="row">
+    <h2 class="col-sm-3">Movies List</h2>
+    <div class="col-sm-2"></div>
+    @Html.ActionLink(
+        "Add Movie",
+        "New",
+        "Movies",
+        null,
+        new { @class = "btn btn-primary", id="new-btn"}
+    )
+</div>
+
 @if (Model.Any() == false)
 {
     <p>Sorry, There are no movies yet.</p>
