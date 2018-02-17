@@ -46,3 +46,7 @@ input[type="checkbox"].input-validation-error {
 #new-btn {
     margin-top: 20px !important;
 }
+
+a.btn {
+    text-transform: none;
+}
