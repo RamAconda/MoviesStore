@@ -33,7 +33,8 @@
     </div>
     
     @Html.HiddenFor(model => model.Movie.Id)
-    <input class="btn btn-primary" type="submit" value="Save"/>
+    @Html.AntiForgeryToken()
+        <input class="btn btn-primary" type="submit" value="Save"/>
 }
 
 
